@@ -1,4 +1,4 @@
-// Classes 
+// Classes  
 class Cliente {
     constructor(cpf, nome, datanasc) {
         this.cpf = cpf
@@ -39,7 +39,7 @@ let venda2 = new Venda('002', '24021990', cliente2, produto2)
 console.log(venda1.cliente.nome)
 console.log(venda2.produto.descr)
 
-// Nova Array
+// Nova Array 
 let clientes = []
 let produtos = []
 let vendas = []
@@ -50,7 +50,7 @@ for (let i = 0; i < 3; i++) {
     clientes.push(cliente)
 }
 
-for (let i = 0; i <8; i++) {
+for (let i = 0; i < 8; i++) {
     let produto = new Produto(`COD ${i}`, `Produto ${i}`, 10)
     produtos.push(produto)
 }
@@ -67,3 +67,53 @@ for (let i = 0; i <5; i++) {
 console.log(clientes)
 console.log(produtos)
 console.log(vendas)
+
+
+// Arrays para armazenar os objetos de cada classe 
+let arrayClientes = clientes
+let arrayProdutos = produtos
+let arrayVendas = vendas
+
+// Exibindo os atributos de cada objeto
+console.log("Atributos dos Clientes:")
+arrayClientes.forEach(cliente => {
+    console.log(cliente.nome)
+})
+
+console.log("Atributos do Produtos:")
+arrayProdutos.forEach(produto => {
+    console.log(produto.descr)
+})
+
+console.log("Atributos das Vendas:")
+arrayVendas.forEach(venda => {
+    console.log(venda.datahora)
+})
+
+// Transformando o array de Clientes em um objeto Map
+let mapClientes = new Map(arrayClientes.map(cliente => [cliente.cpf, [cliente.nome, cliente.datanasc]]))
+
+// Transformando o array de Produtos em um objeto Map
+let mapProdutos = new Map(arrayProdutos.map(produto => [produto.codigo, [produto.descr, produto.qtdestoque]]))
+
+// Transformando o array de Vendas em um objeto Map
+let mapVendas = new Map(arrayVendas.map(venda => [venda.codigo, [venda.datahora, venda.cliente, venda.produto]]))
+
+// Exibindo os objetos Map
+console.log("Objeto Map dos Clientes:", mapClientes)
+console.log("Objeto Map dos Produtos:", mapProdutos)
+console.log("Objeto Map das Vendas:", mapVendas)
+
+// Transformando o array de Clientes em um objeto Map
+let mapClientes1 = new Map(arrayClientes.map(cliente => [cliente.cpf, { nome: cliente.nome, datanascimento: cliente.dataNascimento }]))
+
+// Transformando o array de Produtos em um objeto Map
+let mapProdutos1 = new Map(arrayProdutos.map(produto => [produto.codigo, {descr: produto.descr, qtdestoque: produto.qtdestoque} ]))
+
+// Transformando o array de Vendas em um objeto Map
+let mapVendas1 = new Map(arrayVendas.map(venda => [venda.codigo, {datahora: venda.cliente, produto: venda.produto }]))
+
+// Exibindo os objetos Map
+console.log("Objeto Map dos CLientes:", mapClientes)
+console.log("Objeto Map dos Produtos", mapProdutos)
+console.log("Objeto Map das Vendas", mapVendas)
